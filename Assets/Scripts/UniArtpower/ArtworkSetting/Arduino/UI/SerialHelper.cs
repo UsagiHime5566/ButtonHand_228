@@ -147,6 +147,12 @@ public class SerialHelper : MonoBehaviour
             }
         }
     }
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            EmuRecieved();
+        }
+    }
 }
 
 #endif

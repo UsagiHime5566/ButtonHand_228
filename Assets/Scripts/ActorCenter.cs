@@ -14,12 +14,16 @@ public class ActorCenter : HimeLib.SingletonMono<ActorCenter>
     [Header("Target View")]
     
     //動態影像
-    public VideoPlayer Show_video;
-    public Image Show_nameBoard;
-    
+    public VideoElement videoElement;
     //靜態影像
-    public GameObject ImageBackground;
-    public Image Show_image;
+    public PhotoElement photoElement;
+    //黑幕
+    public BlackScreen blackScreen;
+
+    // public VideoPlayer Show_video;
+    // public Image Show_nameBoard;    
+    // public GameObject ImageBackground;
+    // public Image Show_image;
     
 
     
@@ -32,18 +36,17 @@ public class ActorCenter : HimeLib.SingletonMono<ActorCenter>
         if(x != RecieveSymbol)
             return;
 
-        //Debug.Log("Switch!");
-
         curentIndex = (curentIndex + 1) % actorFiles.Count;
-        if(actorFiles[curentIndex].photo != null){
-            ImageBackground.SetActive(true);
-            Show_image.sprite = actorFiles[curentIndex].photo;
-        }
-        else {
-            ImageBackground.SetActive(false);
-            Show_nameBoard.sprite = actorFiles[curentIndex].nameBoard;
-            Show_video.clip = actorFiles[curentIndex].video;
-            Show_video.Play();
-        }
+
+        blackScreen.StartBlackScreen(delegate {
+            if(actorFiles[curentIndex].photo != null){
+                photoElement.gameObject.SetActive(true);
+                photoElement.SetActor(actorFiles[curentIndex]);
+            }
+            else {
+                photoElement.gameObject.SetActive(false);
+                videoElement.SetActor(actorFiles[curentIndex]);
+            }
+        });
     }
 }
