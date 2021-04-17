@@ -8,4 +8,5 @@ public class ActorFiles : ScriptableObject
 {
     public Sprite photo;
     public VideoClip video;
+    public Sprite nameBoard;
 }

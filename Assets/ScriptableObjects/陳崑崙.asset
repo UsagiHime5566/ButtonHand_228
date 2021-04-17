@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3951e00a4043d7449ff53f0b4ff2218, type: 3}
-  m_Name: New Actor Files
+  m_Name: "\u9673\u5D11\u5D19"
   m_EditorClassIdentifier: 
-  photo: {fileID: 0}
+  photo: {fileID: 21300000, guid: 8768adb25478d634698eca285ba2abbf, type: 3}
   video: {fileID: 0}
