@@ -6,7 +6,8 @@ using UnityEngine.Video;
 [CreateAssetMenu]
 public class ActorFiles : ScriptableObject
 {
+    public Sprite nameBoard;
     public Sprite photo;
     public VideoClip video;
-    public Sprite nameBoard;
+    
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3951e00a4043d7449ff53f0b4ff2218, type: 3}
   m_Name: "\u5442\u4F2F\u96C4"
   m_EditorClassIdentifier: 
-  photo: {fileID: 21300000, guid: 6a961c8215d2ad74da96acea1958da4d, type: 3}
-  video: {fileID: 0}
+  photo: {fileID: 0}
+  video: {fileID: 32900000, guid: 6212bac468946e64391c8fdb0244b2d1, type: 3}
+  nameBoard: {fileID: 21300000, guid: be792ef6da0a60b44923d5df2b3a9463, type: 3}
