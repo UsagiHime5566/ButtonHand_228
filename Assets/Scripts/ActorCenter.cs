@@ -26,7 +26,7 @@ public class ActorCenter : HimeLib.SingletonMono<ActorCenter>
     // public Image Show_image;
     
 
-    
+    WaitForSeconds wait = new WaitForSeconds(0.1f);
 
     void Start(){
         arduino.OnRecieveData += SwitchActor;
@@ -38,15 +38,29 @@ public class ActorCenter : HimeLib.SingletonMono<ActorCenter>
 
         curentIndex = (curentIndex + 1) % actorFiles.Count;
 
+        StartCoroutine(DoSwitchActor());
+    }
+
+    IEnumerator DoSwitchActor(){
+
+        bool next = false;
         blackScreen.StartBlackScreen(delegate {
-            if(actorFiles[curentIndex].photo != null){
-                photoElement.gameObject.SetActive(true);
-                photoElement.SetActor(actorFiles[curentIndex]);
-            }
-            else {
-                photoElement.gameObject.SetActive(false);
-                videoElement.SetActor(actorFiles[curentIndex]);
-            }
+            next = true;
         });
+        while(!next){
+            yield return null;
+        }
+
+        if(actorFiles[curentIndex].photo != null){
+            photoElement.gameObject.SetActive(true);
+            photoElement.SetActor(actorFiles[curentIndex]);
+        }
+        else {
+            photoElement.gameObject.SetActive(false);
+            videoElement.SetActor(actorFiles[curentIndex]);
+            yield return wait;
+        }
+
+        blackScreen.CloseBlackScreen(null);
     }
 }

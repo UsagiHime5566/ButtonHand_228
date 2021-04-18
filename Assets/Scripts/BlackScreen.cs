@@ -16,7 +16,12 @@ public class BlackScreen : MonoBehaviour
     public void StartBlackScreen(System.Action callback){
         black.DOFade(1, duration).OnComplete(delegate {
             callback?.Invoke();
-            black.DOFade(0, duration);
+        });
+    }
+
+    public void CloseBlackScreen(System.Action callback){
+        black.DOFade(0, duration).OnComplete(delegate {
+            callback?.Invoke();
         });
     }
 }
