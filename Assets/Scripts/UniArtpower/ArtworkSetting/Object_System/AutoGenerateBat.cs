@@ -30,6 +30,13 @@ public class AutoGenerateBat :MonoBehaviour
             writer.WriteLine(Application.productName + ".exe -screen-width 1920 -screen-height 1080 -screen-fullscreen 1");
             writer.Flush();
             file.Close();
+
+            string shutBatName = exePath + "/建立自動關機" + ".bat";
+            var shutFile = File.Open(shutBatName, FileMode.Create, FileAccess.ReadWrite);
+            var shutWriter = new StreamWriter(shutFile, System.Text.Encoding.GetEncoding("big5"));
+            shutWriter.WriteLine("SCHTASKS /CREATE /SC DAILY /TN \"展場關機\" /TR \"C:\\Windows\\System32\\shutdown.exe -s -t 10\" /ST 17:00");
+            shutWriter.Flush();
+            shutFile.Close();
 #endif
     }
 
